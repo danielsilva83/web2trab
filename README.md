@@ -22,7 +22,7 @@ pre requisitos dos ambiente
 Clone o projeto e acesse a pasta:
 
 ```bash
-$ git clone https://github.com/danielsilva83/web2trab && cd web2trab
+$ git clone https://github.com/danielsilva83/web2trab.git && cd web2trab
 ```
 
 Siga os passos abaixo
