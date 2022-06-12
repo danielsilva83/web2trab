@@ -40,43 +40,7 @@ function ModalQuestao(props) {
     Authorization: `Bearer ${usuarioToken}`,
   };
 
-  function cadastrarQuestoes() {
-    var horarioAux;
-    horarioAux = horario.split(":", 2);
-    startDate.setHours(horarioAux[0], horarioAux[1], 0);
 
-    axios
-      .post(baseURL, dadosQuestoes, {
-        headers: headers,
-      })
-      .then((res) => {
-        toast.success("Questao criada com sucesso");
-        props.close();
-      })
-      .catch((err) => {
-        toast.error(err.response.data.error);
-      });
-  }
-
-  function atualizar(id) {
-    var horarioAux;
-    horarioAux = horario.split(":", 2);
-    startDate.setHours(horarioAux[0], horarioAux[1], 0);
-    if (id) {
-      axios
-        .put(`${baseURL}/${id}`, dadosQuestoes, {
-          headers: headers,
-        })
-        .then((res) => {
-          toast.success("Questao alterada com sucesso");
-          props.close();
-          window.location.reload();
-        })
-        .catch((err) => {
-          toast.error(err.response.data.error);
-        });
-    }
-  }
 
   function adicionaZero(numero) {
     if (numero <= 9) return "0" + numero;
@@ -88,14 +52,6 @@ function ModalQuestao(props) {
       var data = new Date(props.item.dataHoraEntrega);
     }
     props.item ? setTitulo(props.item.titulo) : setTitulo("");
-    props.item ? setDescricao(props.item.descricao) : setDescricao("");
-    props.item && setStartDate(data);
-    props.item &&
-      setHoraFormatada(
-        adicionaZero(data.getHours()) + ":" + adicionaZero(data.getMinutes())
-      );
-    props.item && setMateria(props.item.materia);
-    props.item && setHorario(horaFormatada);
   }, []);
 
   return (
@@ -106,63 +62,20 @@ function ModalQuestao(props) {
       <Modal show={show} onHide={props.close}>
         <Modal.Header closeButton>
           {props.item ? (
-            <Modal.Title>Alterar Questao</Modal.Title>
+            <Modal.Title>Gerar Questao</Modal.Title>
           ) : (
-            <Modal.Title>Resolver Questões</Modal.Title>
+            <Modal.Title>Gerar Questões</Modal.Title>
           )}
         </Modal.Header>
         <Modal.Body>
           <div className="my-2">
-            Titulo da Questao
+            Nivel de Dificuldade
             <input
               type="text"
               className="form-control"
               id="tituloQuestao"
               onChange={(e) => setTitulo(e.target.value)}
               value={props.item && titulo}
-            />
-          </div>
-          <div className="my-2">
-            Conteúdo da Questao
-            <textarea
-              className="form-control"
-              id="textoQuestao"
-              onChange={(e) => setDescricao(e.target.value)}
-              value={props.item && descricao}
-            ></textarea>
-          </div>
-          <div className="my-2">
-            Disciplina
-            <input
-              type="text"
-              className="form-control"
-              id="materia"
-              onChange={(e) => setMateria(e.target.value)}
-              value={props.item && materia}
-            />
-          </div>
-          <div className="my-2">
-            Data de entrega
-            <DatePicker
-              dateFormat="P"
-              locale={ptBR}
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-            />
-          </div>
-          <div className="my-2">
-            Horário de entrega
-            <br />
-            <input
-              type="time"
-              id="appt"
-              name="appt"
-              value={props.item ? horaFormatada : horario}
-              onChange={(e) => {
-                setHorario(e.target.value);
-                setHoraFormatada(e.target.value);
-              }}
-              required
             />
           </div>
         </Modal.Body>
@@ -174,13 +87,10 @@ function ModalQuestao(props) {
             variant="primary"
             onClick={
               props.item
-                ? () => {
-                    atualizar(props.item._id);
-                  }
-                : cadastrarQuestoes
+               
             }
           >
-            Salvar alterações
+            Gerar Questões
           </Button>
         </Modal.Footer>
       </Modal>

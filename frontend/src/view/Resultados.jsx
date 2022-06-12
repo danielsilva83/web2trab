@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
-import Resultado from "../components/questoes";
+import Resultado from "../components/resultado";
 import VerResultado from "../components/cadastrarResultado";
 import NavBar from "../components/navbar-dashboard";
 import "../styles/resultados.css";

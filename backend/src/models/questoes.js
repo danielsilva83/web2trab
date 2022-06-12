@@ -5,11 +5,27 @@ const QuestoesSchema = new mongoose.Schema({
     type: Number,
     require: true,
   },
-  dividendo: {
+  dificuldade: {
+    type: String,
+    require: true,
+  },
+  operacao: {
+    type: String,
+    require: true,
+  },
+  dividendo_a: {
     type: Number,
     require: true,
   },
-  divisor: {
+  divisor_a: {
+    type: Number,
+    require: true,
+  },
+  dividendo_b: {
+    type: Number,
+    require: true,
+  },
+  divisor_b: {
     type: Number,
     require: true,
   },
@@ -21,9 +37,13 @@ const QuestoesSchema = new mongoose.Schema({
   datageracao: {
     type: Date,
   },
-  resultado: {
+
+  div_result: {
     type: Date,
-    default: Date.now,
+  },
+      
+  dendo_result: {
+    type: Date,
   },
   
 });

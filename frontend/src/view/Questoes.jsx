@@ -4,7 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import CadastrarQuestoes from "../components/cadastrarQuestoes";
 import NavBar from "../components/navbar-dashboard";
-import Questao from "../components/resultado";
+import Questao from "../components/questoes";
 import "../styles/questoes.css";
 
 const baseURL = "http://localhost:8010/api/questoes";

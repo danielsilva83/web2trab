@@ -13,62 +13,7 @@ router.get("/", async (req, res) => {
 
     return res.send({ resultados });
   } catch (err) {
-    return res.status(400).send({ error: "Erro ao carregar anotações" });
-  }
-});
-
-router.get("/:resultadoid", async (req, res) => {
-  try {
-    const questoes = await Resultados.findById(req.params.resultadoid).populate(
-      "usuario"
-    );
-
-    return res.send({ questoes });
-  } catch (err) {
-    return res.status(400).send({ error: "Erro ao carregar resultado" });
-  }
-});
-
-router.post("/", async (req, res) => {
-  try {
-    const {  descricao, acertos, erros, data  } = req.body;
-
-    const questoes = await Resultados.create({
-      descricao,
-      acertos,
-      erros,
-      data,
-      usuario: req.userId,
-    });
-
-    await questoes.save();
-
-    return res.send({ questoes });
-  } catch (err) {
-    return res.status(400).send({ error: "Erro ao criar uma resultado" });
-  }
-});
-
-router.put("/:resultadoid", async (req, res) => {
-  try {
-    const { descricao, acertos, erros, data } = req.body;
-
-    const questoes = await Resultados.findByIdAndUpdate(
-      req.params.resultadoid,
-      {
-        descricao,
-        acertos,
-        erros,
-        data,
-      },
-      { new: true }
-    );
-
-    await questoes.save();
-
-    return res.send({ questoes });
-  } catch (err) {
-    return res.status(400).send({ error: "Erro ao editar resultado" });
+    return res.status(400).send({ error: "Erro ao carregar resultados" });
   }
 });
 

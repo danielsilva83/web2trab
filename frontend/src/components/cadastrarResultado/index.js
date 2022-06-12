@@ -23,36 +23,7 @@ function ModalResultado(props) {
     descricao: descricao,
   };
 
-  function cadastrarResultado() {
-    axios
-      .post(baseURL, dadosResultados, {
-        headers: headers,
-      })
-      .then((res) => {
-        toast.success("Resultado criada com sucesso");
-        props.close();
-      })
-      .catch((err) => {
-        toast.error(err.response.data.error);
-      });
-  }
-
-  function atualizar(id) {
-    if (id) {
-      axios
-        .put(`${baseURL}/${id}`, dadosResultados, {
-          headers: headers,
-        })
-        .then((res) => {
-          toast.success("Resultado alterada com sucesso");
-          props.close();
-          window.location.reload();
-        })
-        .catch((err) => {
-          toast.error(err.response.data.error);
-        });
-    }
-  }
+  
 
   useEffect(() => {
     props.item ? setTitulo(props.item.titulo) : setTitulo("");
@@ -67,14 +38,14 @@ function ModalResultado(props) {
       <Modal show={show} onHide={props.close}>
         <Modal.Header closeButton>
           {props.item ? (
-            <Modal.Title>Alterar Resultado</Modal.Title>
+            <Modal.Title>Visualizar Resultado</Modal.Title>
           ) : (
-            <Modal.Title>Resolver Resultados</Modal.Title>
+            <Modal.Title>Visualizar Resultados</Modal.Title>
           )}
         </Modal.Header>
         <Modal.Body>
           <div className="my-2">
-            Titulo da Resultado
+            Selecione o resultados
             <input
               type="text"
               className="form-control"
@@ -82,15 +53,6 @@ function ModalResultado(props) {
               onChange={(e) => setTitulo(e.target.value)}
               value={props.item && titulo}
             />
-          </div>
-          <div className="my-2">
-            Conteúdo da Resultado
-            <textarea
-              className="form-control"
-              id="textoResultado"
-              onChange={(e) => setDescricao(e.target.value)}
-              value={props.item && descricao}
-            ></textarea>
           </div>
         </Modal.Body>
         <Modal.Footer>
@@ -101,13 +63,10 @@ function ModalResultado(props) {
             variant="primary"
             onClick={
               props.item
-                ? () => {
-                    atualizar(props.item._id);
-                  }
-                : cadastrarResultado
+               
             }
           >
-            Salvar alterações
+            Mostrar Resultados
           </Button>
         </Modal.Footer>
       </Modal>
