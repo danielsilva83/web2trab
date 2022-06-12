@@ -28,23 +28,25 @@ function ModalQuestao(props) {
   //   "Redes de computadores",
   // ];
 
-  const dadosQuestoes = {
-    titulo: titulo,
-    descricao: descricao,
-    materia: materia,
-    dataHoraEntrega: startDate,
-  };
 
   const headers = {
     "Content-Type": "application/json; charset=UTF-8",
     Authorization: `Bearer ${usuarioToken}`,
   };
 
+  function gerarQuestao() {
 
-
-  function adicionaZero(numero) {
-    if (numero <= 9) return "0" + numero;
-    else return numero;
+    axios
+      .post(baseURL, {
+        headers: headers,
+      })
+      .then((res) => {
+        toast.success("Questoes geradas com sucesso");
+        props.close();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.error);
+      });
   }
 
   useEffect(() => {
@@ -87,7 +89,10 @@ function ModalQuestao(props) {
             variant="primary"
             onClick={
               props.item
-               
+              ? () => {
+                 
+                }
+              : gerarQuestao
             }
           >
             Gerar Questões

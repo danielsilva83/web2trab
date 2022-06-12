@@ -1,8 +1,8 @@
 const mongoose = require("../database");
 
 const QuestoesSchema = new mongoose.Schema({
-  id: {
-    type: Number,
+  name_teste: {
+    type: String,
     require: true,
   },
   dificuldade: {

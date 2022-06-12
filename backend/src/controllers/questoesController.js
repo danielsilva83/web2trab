@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
  
   try {
     while (n < 10) {
-      const { dificuldade } = req.body;
+      const { dificuldade, nomeTest } = req.body;
       if( dificuldade == 'facil'){
         dividendo_a= [1, 2, 4]
         divisor_a = [1,2,3,4]
@@ -123,7 +123,7 @@ router.post("/", async (req, res) => {
       }
     // id, dividendo,divisor ,datageracao,resultado
       const questoes = await Questoes.create({
-        id,
+        name_teste: nomeTest,
         dificuldade,
         operacao,
         dividendo_a,
@@ -132,8 +132,8 @@ router.post("/", async (req, res) => {
         divisor_b,
         usuario: req.userId,
         datageracao: Date.now(),
-        div_result,
-        dendo_result
+        dendo_result,
+        div_result
       });
 
       await questoes.save();
