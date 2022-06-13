@@ -3,22 +3,22 @@
 Projeto desenvolvido durante a disciplina de Programação Web 2 da UTFPR-CP 2022
 A aplicação é um gerador de questões de fração
 
-a aplicação esta rodando no servidor heroku endereco:
-backend: https://web1trab.herokuapp.com/
-frontend: https://trabweb2front.herokuapp.com/
+- a aplicação esta rodando no servidor heroku endereco:
+- backend: https://web1trab.herokuapp.com/
+- frontend: https://trabweb2front.herokuapp.com/
 
-O projeto está dividido em 3 branch:
--master: (principal de desenvolvimento)
--back: pipeline heroku do deploiment do backend
--fron: pipeline heroku do deploiment do frontend
+- O projeto está dividido em 3 branch:
+- master: (principal de desenvolvimento)
+- back: pipeline heroku do deploiment do backend
+- fron: pipeline heroku do deploiment do frontend
 
-estrutura de pastas:
--backend
-    |-arquivos do back-end do projeto
-    |-Dockerfile
--frontend
-    |-arquivos do front-end do projeto
-    |-Dockerfile
+- estrutura de pastas:
+- backend
+-    |-arquivos do back-end do projeto
+-    |-Dockerfile
+- frontend
+-    |-arquivos do front-end do projeto
+-    |-Dockerfile
 ## 🧪 Tecnologias
 
 As tecnologias utilizadas foram:
