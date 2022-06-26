@@ -8,30 +8,29 @@ A aplicação é um gerador de questões de fração
 - frontend: https://trabweb2front.herokuapp.com/
 
 - O projeto está dividido em 3 branch:
-- master: (principal de desenvolvimento)
-- back: pipeline heroku do deploiment do backend
-- fron: pipeline heroku do deploiment do frontend
+master: (principal de desenvolvimento)
+back: pipeline heroku do deploiment do backend
+fron: pipeline heroku do deploiment do frontend
 
 - estrutura de pastas:
 - backend
--    |-arquivos do back-end do projeto
--    |-Dockerfile
+    |-arquivos do back-end do projeto
+    |-Dockerfile
 - frontend
--    |-arquivos do front-end do projeto
--    |-Dockerfile
+    |-arquivos do front-end do projeto
+    |-Dockerfile
 ## 🧪 Tecnologias
 
 As tecnologias utilizadas foram:
 
 pre requisitos dos ambiente
 
-- [NodeJs](https://nodejs.org/en/)
-- [Express](https://expressjs.com/)
-- [JWT](https://jwt.io/)
-- [React](https://reactjs.org)
-- [Axios](https://axios-http.com/)
-- [Redux](https://redux.js.org/)
-- [MongoDB](https://www.mongodb.com/)
+ [NodeJs](https://nodejs.org/en/)
+ [Express](https://expressjs.com/)
+ [JWT](https://jwt.io/)
+ [React](https://reactjs.org)
+ [Axios](https://axios-http.com/)
+ [Redux](https:/ [MongoDB](https://www.mongodb.com/)
 
 ## 🚀 Getting started
 
