@@ -1,6 +1,8 @@
 const Resultados = require("../models/resultados");
 class resultadosService{
-
+  constructor(){
+    this.resultadosService=[]
+  }
     async listarResultados(req, res){
     try {
         const resultados = await Resultados.find().populate("usuario");

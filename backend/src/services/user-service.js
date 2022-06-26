@@ -6,7 +6,7 @@ class UserService{
 
     async criarUser(req, res){
         const { email } = req.body;
-        this.user.push(email)
+       
         try {
             if (await User.findOne({ email })) {
               return res.status(400).send({ error: "Email já cadastrado" });
