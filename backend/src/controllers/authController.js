@@ -3,8 +3,10 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const authConfig = require("../config/auth.json");
-
+const UserService = require("../services/user-service")
 const router = express.Router();
+
+var user = new UserService()
 
 router.post("/cadastrar", async (req, res) => {
   const { email } = req.body;
