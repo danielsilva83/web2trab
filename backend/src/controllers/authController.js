@@ -1,49 +1,21 @@
 const express = require("express");
-const User = require("../models/user");
+
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const authConfig = require("../config/auth.json");
 const UserService = require("../services/user-service")
+const LoginsService = require("../services/login-service")
 const router = express.Router();
 
 var user = new UserService()
+var login = new LoginsService()
 
 router.post("/cadastrar", async (req, res) => {
-  const { email } = req.body;
-
-  try {
-    if (await User.findOne({ email })) {
-      return res.status(400).send({ error: "Email já cadastrado" });
-    }
-
-    const user = await User.create(req.body);
-
-    user.senha = undefined;
-
-    return res.send({ user });
-  } catch (err) {
-    return res.status(400).send({ error: "Falha ao realizar Cadastro" });
-  }
+  return user.criarUser(req, res)
 });
 
 router.post("/login", async (req, res) => {
-  const { email, senha } = req.body;
-  const user = await User.findOne({ email }).select("+senha");
-
-  if (!user) {
-    return res.status(400).send({ error: "Email não encontrado" });
-  }
-  if (!(await bcrypt.compare(senha, user.senha))) {
-    return res.status(400).send({ error: "Senha incorreta" });
-  }
-
-  user.senha = undefined;
-
-  const token = jwt.sign({ id: user.id }, authConfig.secret, {
-    expiresIn: 86400,
-  });
-
-  res.send({ user, token });
+  return login.login(req, res)
 });
 
 module.exports = (app) => app.use("/auth", router);
